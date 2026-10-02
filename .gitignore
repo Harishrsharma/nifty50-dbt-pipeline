@@ -1,0 +1,3 @@
+dbt-env/
+__pycache__/
+.env
