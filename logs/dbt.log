@@ -1,0 +1,107 @@
+[0m12:31:00.997312 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C50E9F6A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C50C805090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C51152F890>]}
+
+
+============================== 12:31:01.031760 | ac4e4010-ddc7-490a-a099-4d07f551de17 ==============================
+[0m12:31:01.031760 [info ] [MainThread]: Running with dbt=1.12.5
+[0m12:31:01.033121 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\haris\\.dbt', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt init market_pipeline', 'log_path': 'logs'}
+[0m12:31:01.091998 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\haris\.dbt
+[0m12:31:01.095814 [debug] [MainThread]: Starter project path: F:\Personal portfolio Project\Airflow_Project_with_docker\dbt-env\Lib\site-packages\dbt\include\starter_project
+[0m12:31:01.134694 [info ] [MainThread]: Setting up your profile.
+[0m12:32:37.151621 [info ] [MainThread]: Profile market_pipeline written to C:\Users\haris\.dbt\profiles.yml using target's profile_template.yml and your supplied values.
+[0m12:32:37.158506 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m12:32:37.159373 [info ] [MainThread]: dbt version: 1.12.5
+[0m12:32:37.159920 [info ] [MainThread]: python version: 3.14.3
+[0m12:32:37.160957 [info ] [MainThread]: python path: F:\Personal portfolio Project\Airflow_Project_with_docker\dbt-env\Scripts\python.exe
+[0m12:32:37.161645 [info ] [MainThread]: os info: Windows-11-10.0.26300-SP0
+[0m12:32:37.239214 [info ] [MainThread]: Using profiles dir at C:\Users\haris\.dbt
+[0m12:32:37.239818 [info ] [MainThread]: Using profiles.yml file at C:\Users\haris\.dbt\profiles.yml
+[0m12:32:37.240388 [info ] [MainThread]: Using dbt_project.yml file at F:\Personal portfolio Project\Airflow_Project_with_docker\market_pipeline\dbt_project.yml
+[0m12:32:37.241782 [info ] [MainThread]: adapter type: postgres
+[0m12:32:37.242321 [info ] [MainThread]: adapter version: 1.11.0
+[0m12:32:37.361730 [info ] [MainThread]: Configuration:
+[0m12:32:37.362489 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m12:32:37.363276 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m12:32:37.363837 [info ] [MainThread]: Required dependencies:
+[0m12:32:37.364561 [debug] [MainThread]: Executing "git --help"
+[0m12:32:37.461464 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:32:37.462004 [debug] [MainThread]: STDERR: "b''"
+[0m12:32:37.462422 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:32:37.462872 [info ] [MainThread]: Connection:
+[0m12:32:37.463369 [info ] [MainThread]:   host: localhost
+[0m12:32:37.463964 [info ] [MainThread]:   port: 5433
+[0m12:32:37.464373 [info ] [MainThread]:   user: admin
+[0m12:32:37.464931 [info ] [MainThread]:   database: market_data
+[0m12:32:37.465536 [info ] [MainThread]:   schema: public
+[0m12:32:37.466322 [info ] [MainThread]:   connect_timeout: 10
+[0m12:32:37.466975 [info ] [MainThread]:   role: None
+[0m12:32:37.467564 [info ] [MainThread]:   search_path: None
+[0m12:32:37.468163 [info ] [MainThread]:   keepalives_idle: 0
+[0m12:32:37.469022 [info ] [MainThread]:   sslmode: None
+[0m12:32:37.469686 [info ] [MainThread]:   sslcert: None
+[0m12:32:37.470095 [info ] [MainThread]:   sslkey: None
+[0m12:32:37.470478 [info ] [MainThread]:   sslrootcert: None
+[0m12:32:37.470860 [info ] [MainThread]:   application_name: dbt
+[0m12:32:37.471451 [info ] [MainThread]:   autocommit: False
+[0m12:32:37.472034 [info ] [MainThread]:   retries: 1
+[0m12:32:37.472705 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m12:32:37.941856 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m12:32:41.331970 [debug] [MainThread]: Using postgres connection "debug"
+[0m12:32:41.332522 [debug] [MainThread]: On debug: select 1 as id
+[0m12:32:41.332886 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:32:41.494270 [debug] [MainThread]: SQL status: SELECT 1 in 0.161 seconds
+[0m12:32:41.495264 [debug] [MainThread]: On debug: Close
+[0m12:32:41.495697 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m12:32:41.496362 [info ] [MainThread]: [32mAll checks passed![0m
+[0m12:32:41.496920 [info ] [MainThread]: Your new dbt project "market_pipeline" was created!
+Initialized new project in F:\Personal portfolio Project\Airflow_Project_with_docker\market_pipeline\market_pipeline
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:32:41.498095 [debug] [MainThread]: Command `dbt init` succeeded at 12:32:41.497929 after 100.71 seconds
+[0m12:32:41.498499 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m12:32:41.498883 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C51149A780>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C5118A7D10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001C50F7FC9E0>]}
+[0m12:32:41.499816 [debug] [MainThread]: Flushing usage events
+[0m12:32:42.582714 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:41:02.764609 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D2B06A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D0908F50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D56DF890>]}
+
+
+============================== 12:41:02.805846 | f1307462-d6d8-4f9e-9ad0-11c6f17fc003 ==============================
+[0m12:41:02.805846 [info ] [MainThread]: Running with dbt=1.12.5
+[0m12:41:02.807406 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\haris\\.dbt', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt run', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m12:41:02.808301 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path F:\Personal portfolio Project\Airflow_Project_with_docker\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m12:41:02.809854 [debug] [MainThread]: Command `dbt run` failed at 12:41:02.809612 after 0.32 seconds
+[0m12:41:02.810313 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D57B83E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D563FE30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E5D57158C0>]}
+[0m12:41:02.810789 [debug] [MainThread]: Flushing usage events
+[0m12:41:03.743482 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m10:58:21.638159 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF664B2A50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF642C5090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF6908F890>]}
+
+
+============================== 10:58:21.672545 | 2677e5cc-e049-4645-a8bc-98dea9865f6b ==============================
+[0m10:58:21.672545 [info ] [MainThread]: Running with dbt=1.12.5
+[0m10:58:21.674560 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'static_parser': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\haris\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'hints_enabled': 'True', 'invocation_command': 'dbt test', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m10:58:21.677327 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path F:\Personal portfolio Project\Airflow_Project_with_docker\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m10:58:21.678362 [debug] [MainThread]: Command `dbt test` failed at 10:58:21.678238 after 0.45 seconds
+[0m10:58:21.678745 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF691683E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF68FEFE30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EF690C58C0>]}
+[0m10:58:21.679130 [debug] [MainThread]: Flushing usage events
+[0m10:58:22.698039 [debug] [MainThread]: An error was encountered while trying to flush usage events

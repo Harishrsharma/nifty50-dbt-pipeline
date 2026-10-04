@@ -1,7 +1,23 @@
-version: '3.8'
+x-airflow-common: &airflow-common
+  build: .
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow_pass@postgres-airflow:5432/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    AIRFLOW__CORE__LOGGING_LEVEL: INFO
+  volumes:
+    - ./dags:/opt/airflow/dags
+    - ./logs:/opt/airflow/logs
+    - ./plugins:/opt/airflow/plugins
+    - ./market_pipeline:/opt/airflow/market_pipeline
+    - ./extract_options.py:/opt/airflow/extract_options.py
+  networks:
+    - pipeline_network
 
 services:
-  postgres:
+  # 1. The Data Warehouse (Bronze/Silver/Gold)
+  nifty_warehouse:
     image: postgres:15
     container_name: nifty_warehouse
     environment:
@@ -11,7 +27,68 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - warehouse_data:/var/lib/postgresql/data
+    networks:
+      - pipeline_network
+
+  # 2. Airflow Metadata Database (Dedicated PostgreSQL instance)
+  postgres-airflow:
+    image: postgres:15
+    container_name: airflow_metadata_db
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow_pass
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow_db_data:/var/lib/postgresql/data
+    networks:
+      - pipeline_network
+
+  # 3. Airflow DB Migration & Admin User Initialization
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow_init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate
+        airflow users create \
+          --username admin \
+          --firstname Data \
+          --lastname Engineer \
+          --role Admin \
+          --email admin@example.com \
+          --password admin
+    depends_on:
+      - postgres-airflow
+
+  # 4. Airflow Webserver (UI dashboard)
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow_webserver
+    command: webserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    restart: always
+
+  # 5. Airflow Scheduler (DAG triggers and task execution)
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow_scheduler
+    command: scheduler
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+    restart: always
 
 volumes:
-  pg_data:
+  warehouse_data:
+  airflow_db_data:
+
+networks:
+  pipeline_network:
+    name: pipeline_network
