@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: market_warehouse
+    schema: public
+    tables:
+      - name: bronze_raw_options
+        description: "Raw ingested market data payloads from Yahoo Finance."

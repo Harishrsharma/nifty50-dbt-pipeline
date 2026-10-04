@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fct_daily_market_performance
+    description: "Gold fact table containing daily price spreads, percentage returns, and market trend indicators."
+    columns:
+      - name: symbol
+        description: "Ticker symbol of the asset."
+        tests:
+          - not_null
+
+      - name: trade_date
+        description: "Session date."
+        tests:
+          - not_null
+
+      - name: price_spread
+        description: "Calculated point difference between close and open."
+        tests:
+          - not_null
+
+      - name: daily_return_pct
+        description: "Calculated percentage return."
+        tests:
+          - not_null
+
+      - name: market_trend
+        description: "Intraday direction classification."
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['GAIN', 'LOSS', 'FLAT']
