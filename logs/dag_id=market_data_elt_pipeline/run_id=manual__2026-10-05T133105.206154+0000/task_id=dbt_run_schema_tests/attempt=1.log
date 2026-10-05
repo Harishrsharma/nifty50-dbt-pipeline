@@ -1,9 +1,0 @@
-[2026-10-05T13:32:33.155+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
-[2026-10-05T13:32:33.305+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: market_data_elt_pipeline.dbt_run_schema_tests manual__2026-10-05T13:31:05.206154+00:00 [queued]>
-[2026-10-05T13:32:33.356+0000] {taskinstance.py:2614} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: market_data_elt_pipeline.dbt_run_schema_tests manual__2026-10-05T13:31:05.206154+00:00 [queued]>
-[2026-10-05T13:32:33.359+0000] {taskinstance.py:2867} INFO - Starting attempt 1 of 2
-[2026-10-05T13:32:33.410+0000] {taskinstance.py:2890} INFO - Executing <Task(BashOperator): dbt_run_schema_tests> on 2026-10-05 13:31:05.206154+00:00
-[2026-10-05T13:32:33.440+0000] {standard_task_runner.py:72} INFO - Started process 1285 to run task
-[2026-10-05T13:32:33.454+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'market_data_elt_pipeline', 'dbt_run_schema_tests', 'manual__2026-10-05T13:31:05.206154+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/market_elt_pipeline.py', '--cfg-path', '/tmp/tmp7b43jet5']
-[2026-10-05T13:32:33.471+0000] {standard_task_runner.py:105} INFO - Job 24: Subtask dbt_run_schema_tests
-[2026-10-05T13:32:33.650+0000] {task_command.py:467} INFO - Running <TaskInstance: market_data_elt_pipeline.dbt_run_schema_tests manual__2026-10-05T13:31:05.206154+00:00 [running]> on host 8e41545c7181

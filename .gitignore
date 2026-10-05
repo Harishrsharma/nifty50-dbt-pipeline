@@ -1,3 +1,7 @@
 dbt-env/
 __pycache__/
 .env
+logs/
+plugins/
+*.log
+__pycache__/
