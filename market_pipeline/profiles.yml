@@ -1,0 +1,29 @@
+# ==============================================================================
+# DBT PROFILES CONFIGURATION
+# dbt requires a profiles.yml to know which database adapter, host, credentials,
+# and schema to execute its compiled SQL against.
+# ==============================================================================
+market_pipeline:
+  target: docker # Default target to run when no --target is specified
+  outputs:
+    # Target 1: Used when running dbt inside the Docker container (Airflow)
+    docker:
+      type: postgres
+      host: nifty_warehouse      # Docker internal network DNS name
+      port: 5432                 # Internal Postgres port inside Docker
+      user: admin
+      password: password123
+      dbname: market_data
+      schema: public
+      threads: 4                 # Runs up to 4 models concurrently
+
+    # Target 2: Used if you decide to run dbt locally from Windows PowerShell
+    dev:
+      type: postgres
+      host: localhost            # Windows host loopback
+      port: 5433                 # Port mapped to Windows host
+      user: admin
+      password: password123
+      dbname: market_data
+      schema: public
+      threads: 4

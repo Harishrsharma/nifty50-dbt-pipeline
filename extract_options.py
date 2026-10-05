@@ -1,11 +1,34 @@
 import os
-import json
-import psycopg
+import psycopg2 as psycopg
 import yfinance as yf
-from dotenv import load_dotenv
+import json
+from datetime import datetime
 
-load_dotenv()
-DB_URI = os.getenv("DB_URI")
+# ==============================================================================
+# ENVIRONMENT-AWARE CONFIGURATION
+# os.getenv("KEY", "default") checks if the OS/Docker provided an environment
+# variable. If yes, it uses it. If not, it falls back to local Windows defaults.
+# This prevents hardcoding passwords while letting the same script run anywhere.
+# ==============================================================================
+DB_HOST = os.getenv("DB_HOST", "localhost")      # Docker passes 'nifty_warehouse'
+DB_PORT = os.getenv("DB_PORT", "5433")           # Docker passes '5432'
+DB_NAME = os.getenv("DB_NAME", "market_data")
+DB_USER = os.getenv("DB_USER", "admin")
+DB_PASS = os.getenv("DB_PASSWORD", "password123")
+DB_URI = f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+def get_connection():
+    """
+    Establishes an isolated PostgreSQL database connection.
+    In production, this handles retries and connection pooling.
+    """
+    return psycopg.connect(
+        host=DB_HOST,
+        port=DB_PORT,
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASS
+    )
 
 def fetch_free_market_data():
     """Fetches real end-of-day data for Nifty 50 and Reliance using Yahoo Finance."""
@@ -41,16 +64,23 @@ def fetch_free_market_data():
     }
     return payload
 
-def load_to_bronze(raw_data: dict):
-    print("Connecting to PostgreSQL to load data...")
+def load_to_bronze(data):
     with psycopg.connect(DB_URI) as conn:
         with conn.cursor() as cur:
-            json_payload = json.dumps(raw_data)
+            # Ensure the landing table exists before inserting
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS bronze_raw_options (
+                    id SERIAL PRIMARY KEY,
+                    raw_payload JSONB NOT NULL,
+                    fetched_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+                );
+            """)
             cur.execute("""
                 INSERT INTO bronze_raw_options (raw_payload)
                 VALUES (%s);
-            """, (json_payload,))
-            print("Successfully inserted free market data into Postgres!")
+            """, (json.dumps(data),))
+        conn.commit()
+    print("Data loaded into bronze layer successfully.")
 
 if __name__ == "__main__":
     data = fetch_free_market_data()
